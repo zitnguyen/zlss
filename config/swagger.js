@@ -609,6 +609,7 @@ const options = {
         // Contact Schema
         Contact: {
           type: "object",
+          required: ["name", "email", "phone"],
           properties: {
             _id: {
               type: "string",
@@ -2822,11 +2823,20 @@ const options = {
               "application/json": {
                 schema: {
                   type: "object",
+                  required: ["studentName", "phone", "email", "course"],
                   properties: {
-                    name: { type: "string" },
+                    course: { type: "string", description: "Course ID" },
+                    studentName: { type: "string" },
+                    studentBirthYear: { type: "string" },
+                    parentName: { type: "string" },
                     email: { type: "string", format: "email" },
                     phone: { type: "string" },
-                    courseId: { type: "string" },
+                    courseNote: { type: "string" },
+                    preferredTimes: {
+                      type: "array",
+                      items: { type: "string" },
+                    },
+                    notes: { type: "string" },
                   },
                 },
               },
