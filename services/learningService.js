@@ -52,8 +52,11 @@ exports.getLearningByUser = async (userId) => {
   return learnings.map(enrichLearningData);
 };
 
-exports.getLearningById = async (id) => {
-  const learning = await Learning.findById(id).populate({
+exports.getLearningById = async (id, userId) => {
+  const learning = await Learning.findOne({
+    _id: id,
+    userId,
+  }).populate({
     path: "courseId",
     select: "title thumbnail level totalDuration instructor",
     populate: {
@@ -136,8 +139,11 @@ exports.getLearningProgress = async (userId, courseId) => {
   return enrichLearningData(learning);
 };
 
-exports.deleteLearning = async (id) => {
-  const learning = await Learning.findByIdAndDelete(id);
+exports.deleteLearning = async (id, userId) => {
+  const learning = await Learning.findOneAndDelete({
+    _id: id,
+    userId,
+  });
   if (!learning) {
     throw new AppError("Learning record not found", 404);
   }

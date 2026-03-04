@@ -12,7 +12,10 @@ exports.getMyLearning = asyncHandler(async (req, res) => {
 });
 
 exports.getLearningById = asyncHandler(async (req, res) => {
-  const learning = await learningService.getLearningById(req.params.id);
+  const learning = await learningService.getLearningById(
+    req.params.id,
+    req.user.id,
+  );
 
   res.status(200).json({
     success: true,
@@ -78,7 +81,7 @@ exports.getProgress = asyncHandler(async (req, res) => {
 });
 
 exports.deleteLearning = asyncHandler(async (req, res) => {
-  await learningService.deleteLearning(req.params.id);
+  await learningService.deleteLearning(req.params.id, req.user.id);
 
   res.status(200).json({
     success: true,
