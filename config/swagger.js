@@ -749,7 +749,7 @@ const options = {
           tags: ["Authentication"],
           summary: "Register a new user",
           description:
-            "Create a new user account with email, password, and basic information",
+            "Create a new user account with email, password, and basic information. New users are automatically assigned the 'parent' role",
           operationId: "signUp",
           requestBody: {
             required: true,
@@ -757,16 +757,12 @@ const options = {
               "application/json": {
                 schema: {
                   type: "object",
-                  required: ["username", "email", "password", "name", "role"],
+                  required: ["username", "email", "password", "name"],
                   properties: {
                     username: { type: "string" },
                     email: { type: "string", format: "email" },
                     password: { type: "string", format: "password" },
                     name: { type: "string" },
-                    role: {
-                      type: "string",
-                      enum: ["admin", "teacher", "parent", "student"],
-                    },
                   },
                 },
               },

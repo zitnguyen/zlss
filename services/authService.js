@@ -20,7 +20,7 @@ const generateRefreshToken = () => {
 };
 //đăng ký
 exports.signupService = async (data) => {
-  const { username, password, email, name, phone, address, role } = data;
+  const { username, password, email, name, phone, address } = data;
 
   // validation required
   if (!username || !password || !phone || !email) {
@@ -66,7 +66,7 @@ exports.signupService = async (data) => {
     name,
     phone,
     address,
-    role: role || "parent",
+    role: "parent", // ✅ Luôn là "parent", không chấp nhận từ request
   });
 
   return user;
