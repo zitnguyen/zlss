@@ -1,5 +1,5 @@
 PORT=5000
-MONGO_URI=mongodb://127.0.0.1:27017/finaldd
+MONGO_URI=mongodb+srv://zchessvn_db_user:tutrinh201220N@cluster0.h3g0t5c.mongodb.net/?appName=Cluster0
 JWT_SECRET=supersecretkey
 JWT_REFRESH_SECRET=superrefreshsecretkey
 NODE_ENV=development
