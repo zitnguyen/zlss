@@ -758,12 +758,18 @@ const options = {
               "application/json": {
                 schema: {
                   type: "object",
-                  required: ["username", "email", "password", "name"],
+                  required: ["username", "email", "password", "name", "phone"],
                   properties: {
                     username: { type: "string" },
                     email: { type: "string", format: "email" },
                     password: { type: "string", format: "password" },
                     name: { type: "string" },
+                    phone: {
+                      type: "string",
+                      description:
+                        "Valid phone number (starts with 0, 10-11 digits)",
+                    },
+                    address: { type: "string" },
                   },
                 },
               },
